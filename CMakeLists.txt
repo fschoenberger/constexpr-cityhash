@@ -14,5 +14,10 @@ enable_testing()
 
 add_executable(test_constexprhash test/test_cityhash.cpp)
 target_link_libraries(test_constexprhash PRIVATE GTest::GTest GTest::Main constexprhash)
+set_target_properties(test_constexprhash PROPERTIES
+	CXX_STANDARD 23
+	CXX_STANDARD_REQUIRED ON
+	CXX_EXTENSIONS OFF
+)
 
 gtest_discover_tests(test_constexprhash)
