@@ -1,0 +1,34 @@
+BasedOnStyle: Google
+IndentWidth: 4
+
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveMacros: false
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlines: DontAlign
+AlignTrailingComments: false
+
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+TabWidth: 4
+UseTab: Never
+
+ColumnLimit: 160
+
+IncludeCategories:
+  - Regex: '^"(\.\.\/)*prologue.hpp"$' # Prologue comes first in headers
+    Priority: -2
+  - Regex: '^"(\.\.\/)*pch.hpp"$' # PCH comes first in TUs
+    Priority: -1
+  # Now we have the file's main header
+  - Regex: '^(<|"(gtest|gmock)/)' # GTest/ GMock headers should come next
+    Priority: 1
+  - Regex: '^<[[:alnum:]]+>$' # Now, we do STL headers
+    Priority: 2
+  - Regex: '^<.*>$' # Now, we do all external headers
+    Priority: 3
+  - Regex: '^.*$' # And finally, all other headers
+    Priority: 4
+
+FixNamespaceComments: true
